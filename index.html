@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoreSched Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="text-center">⚡ CoreSched Visualizer</h1>
+    <p class="text-center">Interactive CPU Scheduling Algorithm Visualizer</p>
+
+    <!-- Process Input Form -->
+    <div class="card p-3 mb-4">
+      <h4>Add Process</h4>
+      <form id="processForm" class="row g-3">
+        <div class="col-md-2">
+          <input type="text" id="pid" class="form-control" placeholder="Process ID" required>
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="arrival" class="form-control" placeholder="Arrival Time" required>
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="burst" class="form-control" placeholder="Burst Time" required>
+        </div>
+        <div class="col-md-2">
+          <input type="number" id="priority" class="form-control" placeholder="Priority (optional)">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Algorithm Selection -->
+    <div class="mb-4">
+      <label for="algorithm" class="form-label">Select Scheduling Algorithm:</label>
+      <select id="algorithm" class="form-select w-50">
+        <option value="FCFS">First Come First Serve (FCFS)</option>
+        <option value="SJF">Shortest Job First (SJF)</option>
+        <option value="SRTF">Shortest Remaining Time First (SRTF)</option>
+        <option value="RR">Round Robin (RR)</option>
+        <option value="Priority">Priority Scheduling</option>
+        <option value="LJF">Longest Job First (LJF)</option>
+        <option value="LRTF">Longest Remaining Time First (LRTF)</option>
+      </select>
+      <input type="number" id="quantum" class="form-control w-25 mt-2" placeholder="Quantum (for RR)" style="display:none;">
+    </div>
+
+    <!-- Buttons -->
+    <div class="mb-4">
+      <button id="runBtn" class="btn btn-success">Run Simulation</button>
+      <button id="resetBtn" class="btn btn-danger">Reset</button>
+    </div>
+
+    <!-- Visualization Area -->
+    <div id="ganttChart" class="mb-4"></div>
+
+    <!-- Statistics -->
+    <div id="statsPanel" class="card p-3">
+      <h4>Statistics</h4>
+      <div id="statsContent">Waiting Time, Turnaround Time, CPU Utilization will appear here...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
